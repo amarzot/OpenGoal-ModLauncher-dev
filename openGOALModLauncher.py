@@ -846,7 +846,7 @@ while True:
         subfolders = [f.name for f in os.scandir(ModFolderPATH) if f.is_dir()]
 
         if tmpModSelected in subfolders:
-            dir = dirs.user_data_dir + "\\OpenGOAL-Mods\\" + tmpModSelected
+            dir = Path(dirs.user_data_dir) / "OpenGOAL-Mods"/ tmpModSelected
             launcherUtils.openFolder(dir)
         else:
             sg.Popup("Selected mod is not installed", keep_on_top=True, icon=iconfile)
@@ -940,7 +940,7 @@ while True:
         LATEST_TABLE_DATA = getRefreshedTableData(None)
         window["-MODTABLE-"].update(values=LATEST_TABLE_DATA)
     elif event == "-VIEWISOFOLDER-":
-        dir = dirs.user_data_dir + "\\OpenGOAL-Mods\\_iso_data"
+        dir = Path(dirs.user_data_dir) / "OpenGOAL-Mods"/"_iso_data"
         launcherUtils.ensure_jak_folders_exist()
         launcherUtils.openFolder(dir)
     elif event == "-JAKMODSWEB-":
