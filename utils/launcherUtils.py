@@ -140,7 +140,8 @@ def moveDirContents(src, dest):
       shutil.move(src_path, dst_path)
 
 def makeDirSymlink(link, target):
-    subprocess.check_call('mklink /J "%s" "%s"' % (link, target), shell=True)
+    os.symlink(target, link, target_is_directory=True)
+
 
 
 def makeFileSymlink(link, target):
