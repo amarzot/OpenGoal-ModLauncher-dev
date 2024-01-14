@@ -145,10 +145,7 @@ def makeDirSymlink(link, target):
 
 
 def makeFileSymlink(link, target):
-    # if ctypes.windll.shell32.IsUserAnAdmin():
-    #     subprocess.check_call('mklink "%s" "%s"' % (link, target), shell=True)
-    # else:
-    subprocess.check_call('mklink /H "%s" "%s"' % (link, target), shell=True)
+    os.symlink(target, link, target_is_directory=False)
 
 def link_files_by_extension(source_dir, destination_dir):
     # Ensure the source directory exists
